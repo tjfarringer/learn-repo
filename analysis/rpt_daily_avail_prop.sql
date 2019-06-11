@@ -1,13 +1,13 @@
 with daily_avail as (
 
-  select * from {{{{ ref('fct_daily_listing_avail') }}}}
+  select * from {{ref('fct_daily_listing_avail')}}
 
 ),
 
 {% call statement('get_property_types', fetch_result = True) %}
 
     select distinct property_type
-    from {{{{ ref('fct_daily_listing_avail') }}}}
+    from {{ref('fct_daily_listing_avail')}}
 
 {% endcall %}
 
@@ -26,7 +26,7 @@ aggregated as (
   {% for row in property_type_table %}
 
     {% set property_type_og = row.property_type %}
-    {% set property_type_clean = property_type_og | lower | replace(' ', '_') | replace('/', '_')%}
+    {% set property_type_clean = clean_property_type(property_type_og) %}
 
   sum(case when property_type = '{{row.property_type}}' then 1 else 0 end) as num_avail_{{row.property_type}}
 
