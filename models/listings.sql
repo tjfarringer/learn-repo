@@ -1,7 +1,7 @@
 {{ config(materialized='view') }}
 
 select
-,acceptance_rate
+acceptance_rate
 ,access
 ,accommodates
 ,amenities
