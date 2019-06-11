@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: source_data
+
+    tables:
+      - name: listings
+      - name: listing_history
+      - name: reviews
