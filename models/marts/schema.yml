@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_hosts
+    description: Model of all AirBnB hosts in Colorado
+    columns:
+      - name: host_id
+        description: primary key
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_reviewers
+    description: Model of all AirBnB reviewers that stayed in Colorado
+    columns:
+      - name: reviewer_id
+        description: primary key
+        tests:
+          - not_null
+          - unique
