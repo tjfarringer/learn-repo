@@ -2,9 +2,9 @@
 
 select
 review
-listing_id
-id
-comments
-reviewer_name
-date
-from reviews
+,listing_id
+,id
+,comments
+,reviewer_name
+,date
+from learn.source_data.reviews
