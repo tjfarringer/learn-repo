@@ -1,18 +1,22 @@
-with daily_avail as (
+-- depends_on: {{ ref('stg_listings') }}
 
-  select * from {{ref('fct_daily_listing_avail')}}
 
-),
+
 
 {% call statement('get_property_types', fetch_result = True) %}
 
-    select distinct property_type
-    from {{ref('fct_daily_listing_avail')}}
+    select distinct property_type from {{ source('source_data', 'listings') }}
 
 {% endcall %}
 
 {% set property_type_table = load_result('get_property_types').table %}
 
+
+with daily_avail as (
+
+  select * from {{ ref('fct_daily_listing_avail') }}
+
+),
 
 {#% set properties = ['Castle', 'Hostel', 'Villa'] %#}
 
