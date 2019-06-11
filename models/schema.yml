@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: listings
+    description: Model of AirBnB listings in Colorado
+    columns:
+      - name: listing_id
+        description: Primary key of the table
